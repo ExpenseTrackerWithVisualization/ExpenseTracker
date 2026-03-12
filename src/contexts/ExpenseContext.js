@@ -12,6 +12,8 @@ const initialState = {
     { id: 'utilities', name: 'Utilities', color: '#6B5B95' },
     { id: 'salary', name: 'Salary', color: '#88D498' },
     { id: 'freelance', name: 'Freelance', color: '#F3A712' },
+    
+    { id: 'Fashion', name: 'Fashion', color: '#241c6b' },
     { id: 'other', name: 'Other', color: '#A5A58D' },
   ],
   darkMode: false,
