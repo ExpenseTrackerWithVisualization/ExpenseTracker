@@ -1,4 +1,3 @@
-# Experiment 1
 # Expense Tracker Web Application
 
 ![Expense Tracker Banner](https://img.shields.io/badge/Expense%20Tracker-Financial%20Management-blue)
@@ -58,8 +57,8 @@ A sophisticated and responsive Expense Tracker application built with React and 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/ExpenseTrackerWithVisualization/ExpenseTracker.git
-cd ExpenseTracker
+git clone https://github.com/yourusername/expense-tracker.git
+cd expense-tracker
 ```
 
 2. Install dependencies:
