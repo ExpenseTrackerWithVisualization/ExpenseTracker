@@ -57,8 +57,8 @@ A sophisticated and responsive Expense Tracker application built with React and 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/expense-tracker.git
-cd expense-tracker
+git clone https://github.com/ExpenseTrackerWithVisualization/ExpenseTracker.git
+cd ExpenseTracker
 ```
 
 2. Install dependencies:
