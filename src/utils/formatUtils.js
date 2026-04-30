@@ -5,10 +5,11 @@
  * @param {string} currency - The currency to use (default: 'USD')
  * @returns {string} Formatted currency string
  */
-export const formatCurrency = (amount, locale = 'en-US', currency = 'USD') => {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: currency,
+export const formatCurrency = (amount) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'decimal',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(amount);
 };
 
