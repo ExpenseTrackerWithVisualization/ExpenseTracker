@@ -164,6 +164,17 @@ export const ExpenseProvider = ({ children }) => {
         // No saved data, load demo data
         loadDemoData();
       }
+      
+      // Load from database (overwrites localStorage transactions if any exist in DB)
+      fetch('http://localhost:5000/api/transactions')
+        .then(res => res.json())
+        .then(data => {
+          if (data && Array.isArray(data) && data.length > 0) {
+            dispatch({ type: LOAD_DATA, payload: { transactions: data } });
+          }
+        })
+        .catch(err => console.error('Failed to load from DB:', err));
+        
     } catch (error) {
       console.error("Error loading data from localStorage:", error);
       // Fallback to demo data if there's an error
@@ -222,6 +233,12 @@ export const ExpenseProvider = ({ children }) => {
         payload: newTransaction,
       });
 
+      fetch('http://localhost:5000/api/transactions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newTransaction)
+      }).catch(err => console.error('Failed to save to DB:', err));
+
       return newTransaction; // Return the new transaction for reference
     } catch (error) {
       console.error("Error adding transaction:", error);
@@ -255,6 +272,10 @@ export const ExpenseProvider = ({ children }) => {
         type: DELETE_TRANSACTION,
         payload: id,
       });
+
+      fetch(`http://localhost:5000/api/transactions/${id}`, {
+        method: 'DELETE'
+      }).catch(err => console.error('Failed to delete from DB:', err));
     } catch (error) {
       console.error("Error deleting transaction:", error);
     }
@@ -292,6 +313,12 @@ export const ExpenseProvider = ({ children }) => {
         type: EDIT_TRANSACTION,
         payload: updatedTransaction,
       });
+
+      fetch(`http://localhost:5000/api/transactions/${updatedTransaction.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTransaction)
+      }).catch(err => console.error('Failed to update DB:', err));
 
       return updatedTransaction; // Return the updated transaction for reference
     } catch (error) {
